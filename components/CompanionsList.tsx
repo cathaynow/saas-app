@@ -17,10 +17,10 @@ interface CompanionListProps {
     className?: string;
 }
 
-const CompanionsList = ({title, companions, classNames}:CompanionListProps) => {
+const CompanionsList = ({title, companions, classNames}: CompanionListProps) => {
     return (
         <article className={cn('companion-list', classNames)}>
-            <h2 className="font-bold text-3xl">Recent Sessions</h2>
+            <h2 className="font-bold text-3xl">{title}</h2>
 
             <Table>
                 <TableHeader>
@@ -31,34 +31,35 @@ const CompanionsList = ({title, companions, classNames}:CompanionListProps) => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {companions?.map(({id,subject, name, topic,duration}) => (
+                    {companions?.map(({id, subject, name, topic, duration}) => (
                         <TableRow key={id}>
-                        <TableCell>
-                            <Link href={`/companions/${id}`}>
+                            <TableCell>
+                                <Link href={`/companions/${id}`}>
 
-                                <div className="flex items-center gap-2">
-                                    <div className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden"
-                                         style={{backgroundColor: getSubjectColor(subject)}}>
-                                    <Image src={`/icons/${subject}.svg`} alt={subject} width={35} height={35} />
-                                </div>
-                                    <div className="flex flex-col gap-2">
-                                        <p className="font-bold text-2xl">
-                                            {name}
-                                        </p>
-                                        <p className="text-lg">
-                                            {topic}
-                                        </p>
+                                    <div className="flex items-center gap-2">
+                                        <div
+                                            className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden"
+                                            style={{backgroundColor: getSubjectColor(subject)}}>
+                                            <Image src={`/icons/${subject}.svg`} alt={subject} width={35} height={35}/>
+                                        </div>
+                                        <div className="flex flex-col gap-2">
+                                            <p className="font-bold text-2xl">
+                                                {name}
+                                            </p>
+                                            <p className="text-lg">
+                                                {topic}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        </TableCell>
+                                </Link>
+                            </TableCell>
                             <TableCell>
                                 <div className="subject-badge w-fit max-md:hidden">
                                     {subject}
                                 </div>
                                 <div className="flex items-center justify-center rounded-lg w-fit p-2
                                 md:hidden" style={{backgroundColor: getSubjectColor(subject)}}>
-<Image src={`/icons/${subject}.svg`} alt={subject} width={18} height={18} />
+                                    <Image src={`/icons/${subject}.svg`} alt={subject} width={18} height={18}/>
                                 </div>
                             </TableCell>
                             <TableCell>
@@ -70,12 +71,13 @@ const CompanionsList = ({title, companions, classNames}:CompanionListProps) => {
                                         </span>
                                     </p>
 
-                                    <Image src="/icons/clock.svg" alt="minutes" width={14} height={14} className="md:hidden" />
+                                    <Image src="/icons/clock.svg" alt="minutes" width={14} height={14}
+                                           className="md:hidden"/>
 
                                 </div>
                             </TableCell>
-                    </TableRow>
-                        ))}
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </article>
